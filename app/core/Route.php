@@ -10,7 +10,7 @@ class Route {
 	$action_name = 'index';
 
 	$routes = explode('/', $_SERVER['REQUEST_URI']);
-	if(count($routes)>3){
+	if (count($routes) > 3) {
 	    self::errorPage404();
 	}
 	// получаем имя контроллера
@@ -31,13 +31,13 @@ class Route {
 
 	// подцепляем файл с классом модели (файла модели может и не быть)
 
-	$model_path = 'app'.DIRECTORY_SEPARATOR.$model_name . '.php';
+	$model_path = 'app' . DIRECTORY_SEPARATOR . $model_name . '.php';
 	if (file_exists($model_path)) {
 	    include_once $model_path;
 	}
 
 	// подцепляем файл с классом контроллера
-	$controller_path = 'app'.DIRECTORY_SEPARATOR.$controller_name . '.php';
+	$controller_path = 'app' . DIRECTORY_SEPARATOR . $controller_name . '.php';
 	if (file_exists($controller_path)) {
 	    include_once $controller_path;
 	} else {
@@ -53,9 +53,11 @@ class Route {
 	    self::errorPage404();
 	}
     }
-    
-    static public function errorPage404 (){
-	echo '404';
+
+    static public function errorPage404() {
+	header('HTTP/1.1 404 Not Found');
+	header('Status: 404 Not Found');
+	include_once 'app'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'page404.php';
 	exit();
     }
 
