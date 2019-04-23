@@ -18,12 +18,12 @@ class ModelTasks extends Model {
     }
 
     public function all() {
-	$query = "SELECT * FROM tasks";
+	$query = "SELECT * FROM tasks;";
 	$result = $this->db->query($query);
 	if(!$result){
 	    return false;
 	}
-	return $result->fetch_assoc(MYSQLI_ASSOC);
+	return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
