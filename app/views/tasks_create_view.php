@@ -1,5 +1,5 @@
 <?php
-
+//var_dump($GLOBALS); todo
 ?>
 <div class="w3-container w3-teal w3-margin">
   <h2>Добавить задачу</h2>

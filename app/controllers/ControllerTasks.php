@@ -23,7 +23,17 @@ class ControllerTasks extends Controller{
     }
     
     public function action_add() {
-	$data = filter_input(INPUT_POST, 'tasks');
-        var_dump($data);
+	$tasks = filter_input(INPUT_POST, 'tasks');
+        $massege = $this->model->validateTasks($tasks);
+        if($massege === true){
+            $this->model->addTask($tasks);
+            header('Location: '.$_SERVER['HTTP_ORIGIN'].'/tasks');
+        } else {
+
+            $GLOBALS['GLOBALS'] = $massege;
+//            var_dump($GLOBALS); todo
+            header('Location: '.$_SERVER['HTTP_ORIGIN'].'/tasks/create');
+        }
+        
     }
 }
