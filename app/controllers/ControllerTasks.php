@@ -16,4 +16,14 @@ class ControllerTasks extends Controller{
 	$this->view->tasks = $this->model->all();
 	$this->view->render('tasks_index_view');
     }
+    
+    public function action_create() {
+	$this->view->tasks = $this->model->all();
+	$this->view->render('tasks_create_view');
+    }
+    
+    public function action_add() {
+	$data = filter_input(INPUT_POST, 'tasks');
+        var_dump($data);
+    }
 }
