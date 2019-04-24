@@ -39,5 +39,4 @@ class ModelTasks extends Model {
         $query = "INSERT INTO tasks VALUES (NULL, '" . $tasks . "')";
         $this->db->query($query);
     }
-
 }

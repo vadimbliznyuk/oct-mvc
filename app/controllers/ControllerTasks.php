@@ -18,7 +18,6 @@ class ControllerTasks extends Controller{
     }
     
     public function action_create() {
-	$this->view->tasks = $this->model->all();
 	$this->view->render('tasks_create_view');
     }
     
@@ -29,11 +28,8 @@ class ControllerTasks extends Controller{
             $this->model->addTask($tasks);
             header('Location: '.$_SERVER['HTTP_ORIGIN'].'/tasks');
         } else {
-
-            $GLOBALS['GLOBALS'] = $massege;
-//            var_dump($GLOBALS); todo
-            header('Location: '.$_SERVER['HTTP_ORIGIN'].'/tasks/create');
+            $this->view->error = $massege;
+            $this->view->render('tasks_create_view');
         }
-        
     }
 }
