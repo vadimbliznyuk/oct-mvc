@@ -1,6 +1,3 @@
-<?php
-//var_dump($this->tasks);
-?>
 <table class="w3-table-all w3-centered">
         <?php foreach ($this->tasks as $task) : ?>
             <tr>

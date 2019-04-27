@@ -26,9 +26,19 @@ class ModelTasks extends Model {
 	$this->db->query($query);
     }
     
-    public function deleteTask ($task_id){
+    public function updateTask ($task_id, $task){
+        $query = "UPDATE ".$this->table." SET name = '$task' WHERE id = ".$task_id.";";
+        $this->db->query($query);
+    }
+
+        public function deleteTask ($task_id){
         $query = "DELETE FROM ".$this->table." WHERE id = '$task_id';";
 	$this->db->query($query);
     }
 
+    public function getTask ($task_id){
+        $query = "SELECT * FROM " . $this->table . " WHERE id = ".$task_id.";";
+	$result = $this->db->query($query);
+        return $result->fetch_array(MYSQLI_ASSOC); 
+    }
 }

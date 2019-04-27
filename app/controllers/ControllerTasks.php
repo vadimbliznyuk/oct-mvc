@@ -32,17 +32,31 @@ class ControllerTasks extends Controller {
             $this->view->render('tasks_create_view');
         }
     }
-    
+
     public function action_update() {
-        $id = filter_input(INPUT_POST, 'id');
-        $this->view->task_id = $id;
+
+        $task_id = filter_input(INPUT_POST, 'id');
+        $tasks = filter_input(INPUT_POST, 'tasks');
+
+        if ($tasks === null) {
+            $task = $this->model->getTask($task_id);
+            $this->view->task = $task;           
+        } else {
+            $massege = $this->model->validateTasks($tasks);
+            if ($massege === true) {
+                $this->model->updateTask($task_id, $tasks);
+                header('Location: ' . $_SERVER['HTTP_ORIGIN'] . '/tasks');
+            } else {
+                $this->view->error = $massege;
+                $this->view->render('tasks_update_view');
+            }
+        }
         $this->view->render('tasks_update_view');
     }
 
     public function action_delete() {
-        $id = filter_input(INPUT_POST, 'id');
-        $this->model->deleteTask($id);
+        $task_id = filter_input(INPUT_POST, 'id');
+        $this->model->deleteTask($task_id);
         header('Location: ' . $_SERVER['HTTP_ORIGIN'] . '/tasks');
     }
-
 }
