@@ -32,4 +32,8 @@ class ControllerApi extends Controller{
 	$question_id = filter_input_array(INPUT_POST);
 	$this->model->delete($question_id);
     }
+    
+    public function action_addphoto (){
+	var_dump($_FILES);
+    }
 }
