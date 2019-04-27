@@ -25,5 +25,10 @@ class ModelTasks extends Model {
 	$query = "INSERT INTO tasks VALUES (NULL, '" . $tasks . "')";
 	$this->db->query($query);
     }
+    
+    public function deleteTask ($task_id){
+        $query = "DELETE FROM ".$this->table." WHERE id = '$task_id';";
+	$this->db->query($query);
+    }
 
 }
