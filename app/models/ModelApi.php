@@ -15,4 +15,14 @@ class ModelApi extends Model {
 	parent::__construct();
 	$this->table = 'questions';
     }
+    
+    public function add($question) {
+	$query = "insert into ".$this->table." values (null, '{$question['author']}','{$question['text']}');";
+	$this->db->query($query);
+    }
+    
+    public function delete ($question_id){
+	$query = "DELETE FROM ".$this->table." WHERE id = '{$question_id['id']}';";
+	$this->db->query($query);
+    }
 }
