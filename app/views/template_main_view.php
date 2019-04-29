@@ -18,7 +18,7 @@
 		<li><a href="/gallery">gallery</a></li>
 	    </ul>
 	</nav>
-	<main>
+	<main class="w3-margin">
 	    <?php include_once 'app'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.$content_view.'.php';?>
 	</main>
     </body>
